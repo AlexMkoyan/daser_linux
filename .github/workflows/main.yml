@@ -16,4 +16,4 @@ jobs:
         run: echo ${{steps.name.id}}
     
     outputs: |
-      echo ${{ steps.id }}
+      echo ${{ steps.name }}
