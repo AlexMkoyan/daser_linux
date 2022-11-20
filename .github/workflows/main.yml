@@ -13,7 +13,7 @@ jobs:
       - name: Print Hello Message for testing
         run: echo "Hello World"
       - id: step1
-        run: echo ${{steps.name.id}}
+        run: echo ${{steps.name}}
     
     outputs: |
-      echo ${{ steps.name }}
+      echo ${{ steps.id }}
