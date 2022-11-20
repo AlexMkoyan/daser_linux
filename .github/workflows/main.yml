@@ -10,10 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - name: Print Hello Message test
+    - name: Print Hello Message for testing
       run: echo "Hello World"
   my_deploy:
     runs-on: ubuntu-latest
     steps:
-    - name: Print Hello Message deploy
+    - name: Print Hello Message for deploying
       run: echo "Hello World"
