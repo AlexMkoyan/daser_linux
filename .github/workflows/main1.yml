@@ -1,4 +1,4 @@
-name: My-GitHubActions
+name: My-GitHubActions1
 jobs:
   generate:
     steps:
