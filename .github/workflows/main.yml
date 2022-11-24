@@ -5,20 +5,42 @@ on:
     branches:
       - main
         
+#jobs:
+#  job1:
+#    runs-on: ubuntu-latest
+#    # Map a step output to a job output
+#    outputs:
+#      output1: ${{ steps.step1.outputs.test }}
+#      output2: ${{ steps.step2.outputs.test }}
+#    steps:
+#      - id: step1
+#        run: echo "test=hello" >> $GITHUB_OUTPUT
+#      - id: step2
+#        run: echo "test=world" >> $GITHUB_OUTPUT
+#  job2:
+#    runs-on: ubuntu-latest
+#    needs: job1
+#    steps:
+#      - run: echo ${{needs.job1.outputs.output1}} ${{needs.job1.outputs.output2}}
+
 jobs:
-  job1:
-    runs-on: ubuntu-latest
-    # Map a step output to a job output
-    outputs:
-      output1: ${{ steps.step1.outputs.test }}
-      output2: ${{ steps.step2.outputs.test }}
+  generate:
     steps:
-      - id: step1
-        run: echo "test=hello" >> $GITHUB_OUTPUT
-      - id: step2
-        run: echo "test=world" >> $GITHUB_OUTPUT
-  job2:
-    runs-on: ubuntu-latest
-    needs: job1
-    steps:
-      - run: echo ${{needs.job1.outputs.output1}} ${{needs.job1.outputs.output2}}
+      - uses: actions/checkout@v1
+      - name: 'Get Previous tag'
+        id: previoustag
+        uses: "WyriHaximus/github-action-get-previous-tag@v1"
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+      - name: 'Get next minor version'
+        id: semvers
+        uses: "WyriHaximus/github-action-next-semvers@v1"
+        with:
+          version: ${{ steps.previoustag.outputs.tag }}
+      - name: 'Create new milestone'
+        id: createmilestone
+        uses: "WyriHaximus/github-action-create-milestone@v1"
+        with:
+          title: ${{ steps.semvers.outputs.patch }}
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
