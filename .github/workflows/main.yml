@@ -7,9 +7,9 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     steps:
-      - id: step1
+      - id: step3
         name: step1_name
         run: echo "test=hello" >> $GITHUB_OUTPUT
       - name: step2_name
-        run: echo ${{steps.step1.outputs.test}}
+        run: echo ${{steps.step3.outputs.test}}
     
