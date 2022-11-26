@@ -11,5 +11,5 @@ jobs:
         name: step1_name
         run: echo "test=hello" >> $GITHUB_OUTPUT
       - name: step2_name
-        run: echo ${{steps.step1.test}}
+        run: echo ${{steps.step1.outputs.test}}
     
