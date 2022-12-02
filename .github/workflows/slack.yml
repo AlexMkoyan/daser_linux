@@ -2,7 +2,6 @@ name: Slack Notifications
 
 on:
   push:
-    branches: [ master ]
 
 jobs:
   notifySlack:
