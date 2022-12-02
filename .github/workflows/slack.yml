@@ -14,4 +14,4 @@ jobs:
         SLACK_BOT_TOKEN: ${{ secrets.SLACK_WEBHOOK_URL }}
       uses: abinoda/slack-action@master
       with:
-        args: '{\"channel\":\"C04DVFKPG3T\",\"text\":\"helloooooooooooooooo world\"}'
+        args: '{\"channel\":\"C04DVFKPG3T\",\"text\":\"hellooooooooooooooooooooo world\"}'
