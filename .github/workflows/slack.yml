@@ -11,7 +11,7 @@ jobs:
     steps:
     - name: Notify slack
       env:
-        SLACK_BOT_TOKEN: ${{ secrets.SLACK_WEBHOOK_URL }}
-      uses: abinoda/slack-action@master
+        SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+      uses: pullreminders/slack-action@master
       with:
-        args: '{\"channel\":\"C04DVFKPG3T\",\"text\":\"hellooooooooooooooooooooo world\"}'
+        args: '{\"channel\":\"C04DVFKPG3T\",\"text\":\"Hello world\"}'
