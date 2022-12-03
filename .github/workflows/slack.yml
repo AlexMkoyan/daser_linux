@@ -1,18 +1,16 @@
-name: Slack Notifications
+name: Slack Notification Demo
 
-on:
-  pull_request:
-    branches: [ main ]
-
+on: push
 jobs:
-  notifySlack:
-
+  slackNotification:
+    name: Slack Notification
     runs-on: ubuntu-latest
-
     steps:
-    - name: Notify slack
+    - uses: actions/checkout@v2
+    - name: Slack Notification
+      uses: rtCamp/action-slack-notify@v2
       env:
-        SLACK_BOT_TOKEN: ${{ secrets.SLACK_WEBHOOK_URL }}
-      uses: abinoda/slack-action@master
-      with:
-        args: '{\"channel\":\"C04DVFKPG3T\",\"text\":\"Hello world\"}'
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
+        SLACK_USERNAME: mkoyanaleks
+        SLACK_TITLE: barev
+        SLACK_MESSAGE: 'hajox :aaaaaaa:'
